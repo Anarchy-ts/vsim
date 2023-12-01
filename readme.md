@@ -1,6 +1,7 @@
 # IGVC SIMULATION 
 
 ###### Source your workspace and general ros2
+###### Also 'source /usr/share/gazebo/setup.sh'
 ### To launch world :
 
 ```shell
