@@ -21,7 +21,7 @@ def generate_launch_description():
 
     from launch_ros.substitutions import FindPackageShare
     pkg_share = FindPackageShare(package='vsim').find('vsim')
-    gazebo_models_path = os.path.join(pkg_share, 'meshes')
+    gazebo_models_path = os.path.join(pkg_share, 'meshes/igvc/')
     os.environ["GAZEBO_MODEL_PATH"] = gazebo_models_path
 
     return LaunchDescription([
@@ -36,23 +36,26 @@ def generate_launch_description():
             output='screen',
             parameters=[{'use_sim_time': use_sim_time, 'robot_description': robot_desc}],
             arguments=[urdf]),
-        
+        Node(
+            package='joint_state_publisher',
+            executable='joint_state_publisher',
+            name='joint_state_publisher',
+            output='screen',
+            parameters=[{'use_sim_time': use_sim_time, 'robot_description': robot_desc}],
+            arguments=[urdf]
+        ),
+        Node(
+            package="tf2_ros",
+            executable="static_transform_publisher",
+            output="screen" ,
+            arguments=["0", "0", "0", "0", "0", "0", "map", "odom"]
+        ),
+
         Node(
             package='gazebo_ros',
             executable='spawn_entity.py',
-            arguments=['-entity','igvc_bot',
-                       '-x',str(position[0]),
-                       '-y',str(position[1]),
-                       '-z',str(position[2]),
-                       '-R',str(orientation[0]),
-                       '-P',str(orientation[1]),
-                       '-Y',str(orientation[2]),
-                       '-topic','/robot_description'],
+            arguments=['-topic','/robot_description',
+                       '-entity','vnymous'],
             output='screen'
-        ),
-        # Node(
-        #     package='vsim',
-        #     executable='teleop_key.py',
-        #     name='teleop',
-        #     output='screen')
+        ),        
     ])

@@ -22,6 +22,7 @@ find_package(rclcpp REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(gazebo_ros REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
 
 ament_python_install_package(${PROJECT_NAME})
 
@@ -45,15 +46,14 @@ install(
     models
     meshes 
     urdfs 
-    include 
-    src 
+    include  
     vsim 
   DESTINATION share/${PROJECT_NAME}
 )
 
 install(
-  PROGRAMS
-    src/teleop_key.py 
+  DIRECTORY 
+    src
   DESTINATION lib/${PROJECT_NAME}
 )
 
