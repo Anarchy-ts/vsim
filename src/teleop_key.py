@@ -122,7 +122,7 @@ def main():
     else:
         TwistMsg = geometry_msgs.msg.Twist
 
-    pub = node.create_publisher(TwistMsg, '/vnymous_bot/cmd_vel', 10)
+    pub = node.create_publisher(TwistMsg, '/vnymous/cmd_vel', 10)
 
     spinner = threading.Thread(target=rclpy.spin, args=(node,))
     spinner.start()

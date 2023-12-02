@@ -336,4 +336,4 @@
   <gazebo reference="castor_ball2"> 
     <material>Gazebo/Black</material>
   </gazebo>
-</robot>
+</robot> 

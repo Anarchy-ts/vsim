@@ -52,8 +52,8 @@ install(
 )
 
 install(
-  DIRECTORY 
-    src
+  PROGRAMS 
+    src/teleop_key.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
