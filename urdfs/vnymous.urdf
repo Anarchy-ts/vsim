@@ -273,7 +273,7 @@
   <joint name="perp" type="fixed">
     <parent link="base_link"/>
     <child link="perpendicular"/>
-    <origin rpy ="-1.5707 0 -1.5707" xyz="-0.02 0.13 0.905"/>
+    <origin rpy ="-1.5707 0 0" xyz="-0.02 0.13 0.905"/>
   </joint>
 
   <gazebo>
