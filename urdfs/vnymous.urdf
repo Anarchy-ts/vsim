@@ -3,14 +3,14 @@
   
   <link name="base_link">
     <visual>
-      <origin rpy="0 -0 3.14" xyz="-0.35 0 0"/>
+      <origin rpy="0 -0 1.5707" xyz="0 0.35 0"/>
       <geometry>
         <mesh filename="file:///home/tamoghna/ros2_ws/src/vsim/meshes/igvc/igvc_bot.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
 
     <collision>
-      <origin rpy="0 -0 3.14" xyz="-0.35 0 0"/>
+      <origin rpy="0 -0 1.5707" xyz="0 0.35 0"/>
       <geometry>
         <mesh filename="file:///home/tamoghna/ros2_ws/src/vsim/meshes/igvc/igvc_bot.dae" scale="0.001 0.001 0.001"/>
       </geometry>   
@@ -226,21 +226,21 @@
     <parent link="base_link"/>
     <child link="wheel1"/>
     <axis xyz="1 0 0"/>
-    <origin rpy ="0 0 3.14" xyz="0.2 0.0 0"/>
+    <origin rpy ="0 0 1.5707" xyz="0.0 -0.21 0"/>
   </joint>
   
   <joint name="body_to_wheel2" type="continuous">
     <parent link="base_link"/>
     <child link="wheel2"/>
     <axis xyz="-1 0 0"/>
-    <origin rpy ="0 0 0" xyz="-0.22 0.0 0"/>
+    <origin rpy ="0 0 -1.5707" xyz="-0.005 0.22 0"/>
   </joint>
 
   <joint name="body_to_castor_cylinder" type="continuous">
     <parent link="base_link"/>
     <child link="castor_cylinder"/>
     <axis xyz="0 0 1"/>
-    <origin rpy ="0 0 0" xyz="0.002746 -0.377785 -0.01"/>
+    <origin rpy ="0 0 0" xyz="-0.37 0 0"/>
   </joint>
 
   <joint name="cylinder_to_castor_ball" type="continuous">
@@ -250,17 +250,17 @@
     <origin rpy ="0 0.132544 0" xyz="0 0 -0.065"/>
   </joint>
 
-  <joint name="camera_to_body" type="fixed">
+  <joint name="body_to_cam" type="fixed">
     <parent link="base_link"/>
     <child link="zed_camera"/>
-    <origin rpy ="0 0 1.5707" xyz="-0.02 0.13 0.905"/>
+    <origin rpy ="0 0 0" xyz="0.14 0.02 0.905"/>
   </joint>
 
   <joint name="body_to_castor_cylinder2" type="continuous">
     <parent link="base_link"/>
     <child link="castor_cylinder2"/>
     <axis xyz="0 0 1"/>
-    <origin rpy ="0 0 0" xyz="0.002746 0.377785 0"/>
+    <origin rpy ="0 0 0" xyz="0.37 0 -0.01"/>
   </joint>
 
   <joint name="cylinder_to_castor_ball2" type="continuous">
@@ -273,7 +273,7 @@
   <joint name="perp" type="fixed">
     <parent link="base_link"/>
     <child link="perpendicular"/>
-    <origin rpy ="-1.5707 0 0" xyz="-0.02 0.13 0.905"/>
+    <origin rpy ="-1.5707 0 -1.5707" xyz="-0.02 0.13 0.905"/>
   </joint>
 
   <gazebo>
@@ -287,12 +287,12 @@
       <right_joint>body_to_wheel1</right_joint>
 
       <!-- kinematics -->
-      <wheel_separation>0.67336</wheel_separation>
-      <wheel_diameter>0.4</wheel_diameter>
+      <wheel_separation>0.43</wheel_separation>
+      <wheel_diameter>0.24</wheel_diameter>
 
       <!-- limits -->
       <max_wheel_torque>100</max_wheel_torque>
-      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+      <max_wheel_acceleration>2.5</max_wheel_acceleration>
 
       <!-- output -->
       <publish_odom>true</publish_odom>

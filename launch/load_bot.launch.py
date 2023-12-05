@@ -44,12 +44,12 @@ def generate_launch_description():
             parameters=[{'use_sim_time': use_sim_time, 'robot_description': robot_desc}],
             arguments=[urdf]
         ),
-        Node(
-            package="tf2_ros",
-            executable="static_transform_publisher",
-            output="screen" ,
-            arguments=["0", "0", "0", "0", "0", "0", "map", "odom"]
-        ),
+        # Node(
+        #     package="tf2_ros",
+        #     executable="static_transform_publisher",
+        #     output="screen" ,
+        #     arguments=["0", "0", "0", "0", "0", "0", "map", "odom"]
+        # ),
 
         Node(
             package='gazebo_ros',
