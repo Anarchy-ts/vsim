@@ -86,8 +86,11 @@
             
       <plugin name="depthcam_driver" filename="libgazebo_ros_camera.so">
         <ros>
-          <namespace>zed2i</namespace>
-          <!-- <remapping>${name}/points:=depth/points</remapping> -->
+          <namespace>zed</namespace>
+          <remapping>/zed/zed_node/image_raw:=/zed/zed_node/rgb/image_rect_color</remapping>
+          <remapping>/zed/zed_node/depth/image_raw:=/zed/zed_node/depth/depth_registered</remapping>
+          <remapping>/zed/zed_node/points:=/zed/zed_node/point_cloud/cloud_registered</remapping>
+          <remapping>/zed/zed_node/camera_info:=/zed/zed_node/rgb/camera_info</remapping>
         </ros>
         <camera_name>zed_node</camera_name>
         <frame_name>perpendicular</frame_name>
@@ -430,7 +433,7 @@
   <gazebo>
     <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
       <ros>
-        <!-- <namespace>/vnymous</namespace> -->
+        <namespace>/vidhyut</namespace>
       </ros>
 
       <!-- wheels -->
@@ -447,7 +450,7 @@
 
       <!-- output -->
       <publish_odom>true</publish_odom>
-      <publish_odom_tf>false</publish_odom_tf>
+      <publish_odom_tf>true</publish_odom_tf>
       <publish_wheel_tf>false</publish_wheel_tf>
 
       <odometry_frame>odom</odometry_frame>
@@ -478,7 +481,7 @@
   <!-- COLORS -->
 
   <gazebo reference="base_link"> 
-    <material>Gazebo/BlueLaser</material>
+    <material>Gazebo/Grey</material>
   </gazebo>
 
   <gazebo reference="zed_camera"> 
